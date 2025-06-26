@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+pillow
+arabic-reshaper
+python-bidi
+datetime
+jdatetime

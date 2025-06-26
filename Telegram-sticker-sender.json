@@ -1,0 +1,99 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cf251391-d6e2-4abc-8a1b-c9a05f5eaa30",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "http://bot:8000/generate-image",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e80a58aa-8855-471e-8368-8c0e1503c186",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "sendSticker",
+        "chatId": "@te453esteee",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "acc0f939-b893-4c79-96a3-6b686b4a19cf",
+      "name": "Telegram",
+      "webhookId": "14eca44a-24e8-4e76-855a-5816b00dfa7c",
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "telegramApi": {
+          "id": "mA8pqwE7uCkG1A4O",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7ab911ac-4709-4d27-87b8-ecf0f64e58a3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d38c24fada669d13ce886d9b8128a7f09bc7c55bf5de3523165006c1bb2c99bb"
+  },
+  "id": "l6kiimzzIlRKOLt7",
+  "tags": []
+}
